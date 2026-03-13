@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Attendly — Gestão de Presença e Produtividade</title>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ═══════════════ LANDING ═══════════════ -->
+<div id="landing-page">
+  <nav class="nav">
+    <div class="nav-logo" onclick="showPage('landing-page')" style="cursor:pointer;">
+      <img src="Logotopz.png" alt="Attendly" class="logo-img">
+    </div>
+    <div class="nav-links">
+      <a href="#features">Funcionalidades</a>
+      <a href="#pricing">Planos</a>
+      <a href="#about">Sobre</a>
+    </div>
+    <div class="nav-actions">
+      <button class="btn-ghost" onclick="showPage('login-page')">Entrar</button>
+      <button class="btn-primary" onclick="showPage('register-page')">Começar grátis</button>
+    </div>
+    <button class="nav-mobile-toggle" id="nav-toggle" onclick="toggleNav()">☰</button>
+  </nav>
+
+  <div class="nav-drawer" id="nav-drawer">
+    <a href="#features" onclick="closeNav()">Funcionalidades</a>
+    <a href="#pricing" onclick="closeNav()">Planos</a>
+    <a href="#about" onclick="closeNav()">Sobre</a>
+    <div class="drawer-btns">
+      <button class="btn-ghost" style="border:1.5px solid var(--border)" onclick="showPage('login-page');closeNav()">Entrar</button>
+      <button class="btn-primary" onclick="showPage('register-page');closeNav()">Começar grátis</button>
+    </div>
+  </div>
+
+  <section class="hero">
+    <div class="hero-badge">✨ Novo: Relatórios com IA integrada</div>
+    <h1 class="hero-title">Gerencie sua equipe<br>com <span class="gradient-text">simplicidade</span></h1>
+    <p class="hero-sub">Controle presença, acompanhe projetos e aumente a produtividade da sua equipe — tudo em uma única plataforma inteligente.</p>
+    <div class="hero-actions">
+      <button class="btn-primary btn-lg" onclick="showPage('register-page')">Criar conta grátis</button>
+      <button class="btn-outline btn-lg" onclick="showPage('login-page')">Ver demonstração →</button>
+    </div>
+    <div class="hero-stats">
+      <div class="stat-item"><span class="stat-num">12k+</span><span class="stat-label">Empresas ativas</span></div>
+      <div class="stat-divider"></div>
+      <div class="stat-item"><span class="stat-num">98%</span><span class="stat-label">Satisfação</span></div>
+      <div class="stat-divider"></div>
+      <div class="stat-item"><span class="stat-num">4.9★</span><span class="stat-label">Avaliação média</span></div>
+    </div>
+  </section>
+
+  <div class="preview-wrap">
+    <div class="preview-card">
+      <div class="preview-topbar">
+        <div class="preview-dots"><span></span><span></span><span></span></div>
+        <div class="preview-bar-title">Attendly — Calendário da Semana</div>
+      </div>
+      <div class="preview-body">
+        <div class="preview-sidebar">
+          <div class="preview-logo-row"><div class="pv-icon"></div><span>Attendly</span></div>
+          <div class="pv-btn">+ Criar</div>
+          <div class="pv-mini-cal">
+            <div class="pv-mc-row header">D S T Q Q S S</div>
+            <div class="pv-mc-row">1 2 3 4 <span class="pv-today">5</span> 6 7</div>
+            <div class="pv-mc-row">8 9 10 11 12 13 14</div>
+          </div>
+          <div class="pv-agendas">
+            <div class="pv-ag"><span class="dot purple"></span>Pessoal</div>
+            <div class="pv-ag"><span class="dot blue"></span>Equipe</div>
+            <div class="pv-ag"><span class="dot green"></span>Projeto X</div>
+          </div>
+        </div>
+        <div class="preview-main">
+          <div class="pv-header-cols">
+            <div class="pv-col-h">DOM<br><b>1</b></div><div class="pv-col-h">SEG<br><b>2</b></div>
+            <div class="pv-col-h">TER<br><b>3</b></div><div class="pv-col-h">QUA<br><b>4</b></div>
+            <div class="pv-col-h today">QUI<br><b class="circle">5</b></div>
+            <div class="pv-col-h">SEX<br><b>6</b></div><div class="pv-col-h">SAB<br><b>7</b></div>
+          </div>
+          <div class="pv-grid">
+            <div class="pv-ev" style="background:rgba(59,130,246,.25);border-color:#3B82F6">Focus Time</div>
+            <div class="pv-ev" style="background:rgba(124,58,237,.25);border-color:#7C3AED">Daily Standup</div>
+            <div class="pv-ev" style="background:rgba(16,185,129,.25);border-color:#10B981;height:44px">Sprint Review</div>
+            <div class="pv-ev" style="background:rgba(245,158,11,.25);border-color:#F59E0B">Code Review</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <section class="section" id="features">
+    <div class="section-label">Funcionalidades</div>
+    <h2 class="section-title">Tudo que sua equipe precisa</h2>
+    <p class="section-sub">Do controle de presença à geração de relatórios.</p>
+    <div class="features-grid">
+      <div class="feature-box"><div class="fbox-icon purple"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></div><h3>Agenda Inteligente</h3><p>Calendário semanal e diário com criação de eventos, alertas e múltiplas agendas sincronizadas.</p></div>
+      <div class="feature-box"><div class="fbox-icon blue"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div><h3>Gestão de Equipes</h3><p>Crie equipes, adicione membros, defina papéis e acompanhe a presença de cada colaborador em tempo real.</p></div>
+      <div class="feature-box"><div class="fbox-icon green"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/><path d="M3 20h18"/></svg></div><h3>Relatórios em 1 Clique</h3><p>Gere relatórios completos de frequência, produtividade e desempenho automaticamente.</p></div>
+      <div class="feature-box"><div class="fbox-icon amber"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div><h3>Monitoramento em Tempo Real</h3><p>Veja o andamento dos projetos à medida que acontecem, com atualizações ao vivo e notificações.</p></div>
+      <div class="feature-box"><div class="fbox-icon rose"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg></div><h3>Integrações</h3><p>Conecte-se com Slack, Google Workspace, Teams e outros apps que sua equipe já usa.</p></div>
+      <div class="feature-box"><div class="fbox-icon indigo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg></div><h3>App Mobile</h3><p>Acesse tudo pelo celular. Registre presença, consulte agenda e receba alertas onde estiver.</p></div>
+    </div>
+  </section>
+
+  <div class="bg-dark-section">
+    <section class="section" id="pricing">
+      <div class="section-label light">Planos</div>
+      <h2 class="section-title light">Simples e transparente</h2>
+      <p class="section-sub light">Sem taxas escondidas. Cancele quando quiser.</p>
+      <div class="pricing-grid">
+        <div class="pricing-card">
+          <div class="plan-name">Grátis</div><div class="plan-price">R$0<span>/mês</span></div>
+          <div class="plan-desc">Para equipes pequenas começarem.</div>
+          <ul class="plan-features"><li>✓ Até 5 usuários</li><li>✓ Calendário básico</li><li>✓ Relatórios mensais</li><li>✓ Suporte por e-mail</li></ul>
+          <button class="btn-outline" onclick="showPage('register-page')">Começar grátis</button>
+        </div>
+        <div class="pricing-card featured">
+          <div class="plan-badge">Mais popular</div>
+          <div class="plan-name">Pro</div><div class="plan-price">R$49<span>/mês</span></div>
+          <div class="plan-desc">Para equipes em crescimento.</div>
+          <ul class="plan-features"><li>✓ Usuários ilimitados</li><li>✓ Calendário avançado</li><li>✓ Relatórios em tempo real</li><li>✓ Integrações (Slack, Teams)</li><li>✓ Suporte prioritário</li></ul>
+          <button class="btn-primary" onclick="showPage('register-page')">Assinar Pro</button>
+        </div>
+        <div class="pricing-card">
+          <div class="plan-name">Enterprise</div><div class="plan-price">Custom</div>
+          <div class="plan-desc">Para grandes organizações.</div>
+          <ul class="plan-features"><li>✓ Tudo do Pro</li><li>✓ SSO &amp; LDAP</li><li>✓ SLA garantido</li><li>✓ Gerente dedicado</li><li>✓ Treinamento da equipe</li></ul>
+          <button class="btn-outline" onclick="showPage('register-page')">Falar com vendas</button>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <section class="section cta-section" id="about">
+    <h2 class="section-title">Pronto para transformar<br>sua gestão?</h2>
+    <p class="section-sub">Junte-se a mais de 12 mil empresas que já usam o Attendly.</p>
+    <button class="btn-primary btn-lg" onclick="showPage('register-page')">Criar conta grátis →</button>
+  </section>
+
+  <footer class="footer">
+    <p class="footer-copy">© 2026 Attendly. Todos os direitos reservados.</p>
+  </footer>
+</div>
+
+<!-- ═══════════════ LOGIN ═══════════════ -->
+<div id="login-page" style="display:none">
+  <div class="auth-layout">
+    <div class="auth-left">
+      <button class="back-btn" onclick="showPage('landing-page')">← Voltar</button>
+      <div class="logo" onclick="showPage('landing-page')" style="cursor:pointer;"><img src="Logotopz.png" alt="Attendly" class="logo-img"></div>
+        <p class="auth-sub">Wealcome back! Please enter your details</p>
+        <div class="field-group"><label class="field-label">Email</label><div class="input-wrap"><input type="email" placeholder="Example@gmail.com"></div></div>
+        <div class="field-group"><label class="field-label">Password</label>
+          <div class="input-wrap">
+            <input type="password" value="123456" id="pwd-input">
+            <button class="eye-btn" onclick="togglePwd('pwd-input')"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"/><line x1="1" y1="1" x2="23" y2="23"/></svg></button>
+          </div>
+        </div>
+        <div class="remember-row"><label><input type="checkbox"> Remember for 30 days</label><a class="forgot-link">Forgot Password</a></div>
+        <button class="btn-primary btn-full" onclick="goToCalendar()">Sign In</button>
+        <div class="divider"><span>or</span></div>
+        <div class="social-row">
+          <button class="btn-social" onclick="goToCalendar()"><svg width="18" height="18" viewBox="0 0 24 24"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>Sign Up with Google</button>
+          <button class="btn-social apple" onclick="goToCalendar()"><svg width="16" height="18" viewBox="0 0 814 1000" fill="white"><path d="M788.1 340.9c-5.8 4.5-108.2 62.2-108.2 190.5 0 148.4 130.3 200.9 134.2 202.2-.6 3.2-20.7 71.9-68.7 141.9-42.8 61.6-87.5 123.1-155.5 123.1s-85.5-39.5-164-39.5c-76 0-103.7 40.8-165.9 40.8s-105-57.8-155.5-127.4C46 790.7 0 663 0 541.8c0-207.3 135.3-317 269.5-317 71.1 0 130.3 46.4 174.7 46.4 42.7 0 109.6-49 192.5-49 31 0 113.3 2.9 168.1 55.3zm-68.3-180.5c31.8-37.9 54.3-90.9 54.3-143.9 0-7.5-.6-15-1.9-21.2-51.9 1.9-113.9 34.7-150.8 75.8-29.1 32.8-55.8 85.2-55.8 139.1 0 8.2 1.3 16.4 1.9 19.1 3.2.6 8.4 1.3 13.6 1.3 46.4 0 105.8-30.5 138.7-70.2z"/></svg>Sign Up with Apple</button>
+        </div>
+        <p class="auth-switch">Don't have account? <a onclick="showPage('register-page')">Sign Up</a></p>
+      </div>
+    </div>
+    <div class="auth-right">
+      <div class="auth-right-content">
+        <div class="right-headline">Simplify<br>managements<br>with<br><span>our Attendly</span></div>
+        <p class="right-sub">Streamline your workflow, track attendance, and boost team productivity with our all-in-one management suite.</p>
+        <div class="feature-card"><div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/><path d="M3 20h18"/><path d="M6 14l3-3 3 3 3-6" stroke="#a78bfa"/></svg></div><div><div class="feature-title">Real-time tracking</div><div class="feature-desc">Monitor attendance and project progress as it happens with live updates.</div></div></div>
+        <div class="feature-card"><div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div><div><div class="feature-title">Smart reports</div><div class="feature-desc">Generate comprehensive analytical reports with just a single click.</div></div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════ REGISTER ═══════════════ -->
+<div id="register-page" style="display:none" >
+  <div class="auth-layout">
+    <div class="auth-left">
+      <button class="back-btn" onclick="showPage('landing-page')">← Voltar</button>
+      <div class="logo" onclick="showPage('landing-page')" style="cursor:pointer;"><img src="Logotopz.png" alt="Attendly" class="logo-img"></div>
+      <div class="auth-card">
+        <h2>Create Account</h2>
+        <p class="auth-sub">Start for free. No credit card required.</p>
+        <div class="social-row">
+          <button class="btn-social" onclick="goToCalendar()"><svg width="18" height="18" viewBox="0 0 24 24"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>Sign Up with Google</button>
+          <button class="btn-social apple" onclick="goToCalendar()"><svg width="16" height="18" viewBox="0 0 814 1000" fill="white"><path d="M788.1 340.9c-5.8 4.5-108.2 62.2-108.2 190.5 0 148.4 130.3 200.9 134.2 202.2-.6 3.2-20.7 71.9-68.7 141.9-42.8 61.6-87.5 123.1-155.5 123.1s-85.5-39.5-164-39.5c-76 0-103.7 40.8-165.9 40.8s-105-57.8-155.5-127.4C46 790.7 0 663 0 541.8c0-207.3 135.3-317 269.5-317 71.1 0 130.3 46.4 174.7 46.4 42.7 0 109.6-49 192.5-49 31 0 113.3 2.9 168.1 55.3zm-68.3-180.5c31.8-37.9 54.3-90.9 54.3-143.9 0-7.5-.6-15-1.9-21.2-51.9 1.9-113.9 34.7-150.8 75.8-29.1 32.8-55.8 85.2-55.8 139.1 0 8.2 1.3 16.4 1.9 19.1 3.2.6 8.4 1.3 13.6 1.3 46.4 0 105.8-30.5 138.7-70.2z"/></svg>Sign Up with Apple</button>
+        </div>
+        <div class="divider"><span>or fill in the form</span></div>
+        <div class="field-row-2">
+          <div class="field-group"><label class="field-label">First Name</label><div class="input-wrap"><input type="text" placeholder="John"></div></div>
+          <div class="field-group"><label class="field-label">Last Name</label><div class="input-wrap"><input type="text" placeholder="Smith"></div></div>
+        </div>
+        <div class="field-group"><label class="field-label">Email</label><div class="input-wrap"><input type="email" placeholder="john@company.com"></div></div>
+        <div class="field-group"><label class="field-label">Company <span class="field-optional">(optional)</span></label><div class="input-wrap"><input type="text" placeholder="My Company Ltd."></div></div>
+        <div class="field-group"><label class="field-label">Password</label>
+          <div class="input-wrap">
+            <input type="password" id="reg-pwd" placeholder="Minimum 8 characters">
+            <button class="eye-btn" onclick="togglePwd('reg-pwd')"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"/><line x1="1" y1="1" x2="23" y2="23"/></svg></button>
+          </div>
+          <div class="pwd-strength" id="pwd-strength"><div class="strength-bar"></div><div class="strength-bar"></div><div class="strength-bar"></div><div class="strength-bar"></div></div>
+        </div>
+        <div class="field-group"><label class="field-label">Confirm Password</label><div class="input-wrap"><input type="password" id="reg-pwd2" placeholder="Repeat your password"></div></div>
+        <label class="terms-check"><input type="checkbox" id="terms-cb"> I agree with the <a href="#">Terms of Use</a> and <a href="#">Privacy Policy</a></label>
+        <button class="btn-primary btn-full" onclick="registerAndGo()">Create free account</button>
+        <p class="auth-switch">Already have an account? <a onclick="showPage('login-page')">Sign In</a></p>
+      </div>
+    </div>
+    <div class="auth-right">
+      <div class="auth-right-content">
+        <div class="right-headline">Get started<br>in <span>less than<br>2 minutes</span></div>
+        <p class="right-sub">Set up your team, import data and start tracking productivity right away.</p>
+        <div class="feature-card"><div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div><div><div class="feature-title">Quick setup</div><div class="feature-desc">Create your account, invite your team and get started in minutes.</div></div></div>
+        <div class="feature-card"><div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div><div><div class="feature-title">Team management</div><div class="feature-desc">Add collaborators by email and manage roles and permissions easily.</div></div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════ CALENDAR APP ═══════════════ -->
+<div id="calendar-page" style="display:none">
+  <div id="sidebar-overlay"></div>
+  <div class="cal-layout">
+
+    <!-- Sidebar -->
+    <div class="cal-sidebar" id="cal-sidebar">
+      <div class="cal-logo" onclick="showPage('landing-page')" style="cursor:pointer;">
+        <img src="Logotopz.png" alt="Attendly" class="logo-img">
+      </div>
+
+      <button class="btn-create" onclick="openModal()">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        Criar evento
+      </button>
+
+      <!-- Sidebar navigation -->
+      <nav class="sidebar-nav">
+        <button class="snav-item active" id="snav-cal" onclick="switchView('calendar')">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+          Calendário
+        </button>
+        <button class="snav-item" id="snav-teams" onclick="switchView('teams')">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          Equipes
+          <span class="badge" id="teams-badge">3</span>
+        </button>
+      </nav>
+
+      <div class="mini-cal">
+        <div class="mini-cal-header">
+          <span class="mini-cal-title" id="mini-cal-title">Março 2026</span>
+          <div class="mini-cal-nav"><button onclick="miniCalPrev()">&#8249;</button><button onclick="miniCalNext()">&#8250;</button></div>
+        </div>
+        <div class="mini-cal-grid" id="mini-cal-grid">
+          <div class="day-header">D</div><div class="day-header">S</div><div class="day-header">T</div>
+          <div class="day-header">Q</div><div class="day-header">Q</div><div class="day-header">S</div><div class="day-header">S</div>
+        </div>
+      </div>
+
+      <div class="agendas-section">
+        <div class="agendas-title">Minhas Agendas</div>
+        <div class="agenda-item"><div class="agenda-dot" style="background:rgba(124,58,237,.3)"><svg viewBox="0 0 24 24" fill="none" stroke="#a78bfa" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg></div><span class="agenda-label">Pessoal</span></div>
+        <div class="agenda-item"><div class="agenda-dot" style="background:rgba(59,130,246,.3)"><svg viewBox="0 0 24 24" fill="none" stroke="#60a5fa" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg></div><span class="agenda-label">Equipe</span></div>
+        <div class="agenda-item"><div class="agenda-dot" style="background:rgba(16,185,129,.3)"><svg viewBox="0 0 24 24" fill="none" stroke="#34d399" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg></div><span class="agenda-label">Projeto X</span></div>
+      </div>
+
+      <div class="sidebar-bottom">
+        <button class="sidebar-logout" onclick="showPage('landing-page')">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+          Sair
+        </button>
+      </div>
+    </div>
+
+    <!-- Main content -->
+    <div class="cal-main" id="cal-main">
+      <!-- Topbar -->
+      <div class="cal-topbar">
+        <button class="sidebar-toggle" id="sidebar-toggle">☰</button>
+        <div class="topbar-left">
+          <button class="btn-nav" onclick="navPrev()">&#8249;</button>
+          <button class="btn-nav" onclick="navNext()">&#8250;</button>
+          <span id="cal-title">Março 2026</span>
+        </div>
+        <button class="btn-today" onclick="navToday()">Hoje</button>
+      </div>
+
+      <!-- Calendar -->
+      <div class="cal-header-row" id="cal-header-row"><div class="time-gutter-header"></div></div>
+      <div id="cal-body-scroll"><div id="cal-body"></div></div>
+
+      <!-- Teams view -->
+      <div class="teams-view" id="teams-view">
+        <div class="teams-topbar">
+          <h2>Gerenciar Equipes</h2>
+          <div class="teams-topbar-right">
+            <button class="btn-primary" style="font-size:13px;padding:8px 16px" onclick="openTeamModal()">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" style="margin-right:5px"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+              Nova equipe
+            </button>
+          </div>
+        </div>
+        <div class="teams-scroll" id="teams-scroll"><!-- rendered by JS --></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- EVENT MODAL -->
+<div id="modal-overlay">
+  <div class="modal">
+    <div class="modal-header"><h3 id="modal-heading">Novo Evento</h3><button class="modal-close" onclick="closeModal('modal-overlay')">✕</button></div>
+    <div class="modal-field"><label>Título</label><input type="text" id="modal-title" placeholder="Nome do evento..."></div>
+    <div class="modal-field"><label>Data</label><input type="date" id="modal-date"></div>
+    <div class="modal-row">
+      <div class="modal-field"><label>Início</label><select id="modal-start"><option value="0">00:00</option><option value="1">01:00</option><option value="2">02:00</option><option value="3">03:00</option><option value="4">04:00</option><option value="5">05:00</option><option value="6">06:00</option><option value="7">07:00</option><option value="8">08:00</option><option value="9" selected>09:00</option><option value="10">10:00</option><option value="11">11:00</option><option value="12">12:00</option><option value="13">13:00</option><option value="14">14:00</option><option value="15">15:00</option><option value="16">16:00</option><option value="17">17:00</option><option value="18">18:00</option><option value="19">19:00</option><option value="20">20:00</option><option value="21">21:00</option><option value="22">22:00</option><option value="23">23:00</option></select></div>
+      <div class="modal-field"><label>Fim</label><select id="modal-end"><option value="1">01:00</option><option value="2">02:00</option><option value="3">03:00</option><option value="4">04:00</option><option value="5">05:00</option><option value="6">06:00</option><option value="7">07:00</option><option value="8">08:00</option><option value="9">09:00</option><option value="10" selected>10:00</option><option value="11">11:00</option><option value="12">12:00</option><option value="13">13:00</option><option value="14">14:00</option><option value="15">15:00</option><option value="16">16:00</option><option value="17">17:00</option><option value="18">18:00</option><option value="19">19:00</option><option value="20">20:00</option><option value="21">21:00</option><option value="22">22:00</option><option value="23">23:00</option><option value="24">24:00</option></select></div>
+    </div>
+    <div class="modal-row">
+      <div class="modal-field"><label>Cor</label><select id="modal-color"><option value="purple">🟣 Roxo</option><option value="blue">🔵 Azul</option><option value="green">🟢 Verde</option><option value="rose">🔴 Rosa</option><option value="amber">🟡 Âmbar</option></select></div>
+      <div class="modal-field"><label>Agenda</label><select id="modal-calendar"><option value="Pessoal">Pessoal</option><option value="Equipe">Equipe</option><option value="Projeto X">Projeto X</option></select></div>
+    </div>
+    <div class="modal-actions"><button id="modal-delete">🗑 Remover</button><button id="modal-save">Salvar evento</button></div>
+  </div>
+</div>
+
+<!-- TEAM MODAL -->
+<div id="team-modal-overlay">
+  <div class="modal modal-lg">
+    <div class="modal-header"><h3 id="team-modal-heading">Nova Equipe</h3><button class="modal-close" onclick="closeModal('team-modal-overlay')">✕</button></div>
+    <div class="modal-field"><label>Nome da equipe</label><input type="text" id="team-name" placeholder="Ex: Time de Desenvolvimento"></div>
+    <div class="modal-field"><label>Descrição</label><textarea id="team-desc" placeholder="Descreva o objetivo desta equipe..."></textarea></div>
+    <div class="modal-field"><label>Cor</label>
+      <div class="color-picker" id="team-color-picker">
+        <div class="color-opt selected" style="background:#7C3AED" data-color="#7C3AED" onclick="selectTeamColor(this)"></div>
+        <div class="color-opt" style="background:#3B82F6" data-color="#3B82F6" onclick="selectTeamColor(this)"></div>
+        <div class="color-opt" style="background:#10B981" data-color="#10B981" onclick="selectTeamColor(this)"></div>
+        <div class="color-opt" style="background:#F59E0B" data-color="#F59E0B" onclick="selectTeamColor(this)"></div>
+        <div class="color-opt" style="background:#F43F5E" data-color="#F43F5E" onclick="selectTeamColor(this)"></div>
+        <div class="color-opt" style="background:#06B6D4" data-color="#06B6D4" onclick="selectTeamColor(this)"></div>
+        <div class="color-opt" style="background:#8B5CF6" data-color="#8B5CF6" onclick="selectTeamColor(this)"></div>
+      </div>
+    </div>
+    <input type="hidden" id="team-edit-id" value="">
+    <div class="modal-actions"><button class="modal-cancel-btn" onclick="closeModal('team-modal-overlay')">Cancelar</button><button class="modal-confirm-btn" onclick="saveTeam()">Salvar equipe</button></div>
+  </div>
+</div>
+
+<!-- MEMBER MODAL -->
+<div id="member-modal-overlay">
+  <div class="modal modal-sm">
+    <div class="modal-header"><h3 id="member-modal-heading">Adicionar Membro</h3><button class="modal-close" onclick="closeModal('member-modal-overlay')">✕</button></div>
+    <div class="modal-field"><label>Nome completo</label><input type="text" id="member-name" placeholder="Ex: Ana Souza"></div>
+    <div class="modal-field"><label>E-mail</label><input type="email" id="member-email" placeholder="ana@empresa.com.br"></div>
+    <div class="modal-field"><label>Papel</label><select id="member-role"><option value="membro">Membro</option><option value="admin">Admin</option><option value="viewer">Visualizador</option></select></div>
+    <input type="hidden" id="member-team-id" value="">
+    <input type="hidden" id="member-edit-idx" value="">
+    <div class="modal-actions"><button class="modal-cancel-btn" onclick="closeModal('member-modal-overlay')">Cancelar</button><button class="modal-confirm-btn" onclick="saveMember()">Adicionar</button></div>
+  </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
